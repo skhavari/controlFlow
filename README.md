@@ -6,9 +6,13 @@ The following source code snippets demonstrate several concurrency modes in Type
 
 ## Quick Setup
 To take advantage of TypeScripts main value prop, type safety, the following pre-requisite types are defined. The first defines a Callback as an asynchronous function that takes any number of parameters and returns a promise that completes with and array of elements of any type (lots of room for improvement here, eg, Generics). 
+```typescript
 type Callback = (...args: any[]) => Promise<any[]>;
+```
 The second defines a Schedule function as a function that takes an array of callbacks and an optional concurrency level and returns a promise that completes with the results of those callbacks.
+```typescript
 type Scheduler = (callbacks: readonly Callback[], concurrency?: number) => Promise<any[]>;
+```
 With these lets define a few Schedulers that issue Callbacks serially, all at once, in batches or continuously.
 
 ## Serial 
